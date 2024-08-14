@@ -3,11 +3,70 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Standard titl</title>
+        <title>Rock Paper Sissors</title>
     </head>
     <body>
         <script>
-            console.log("Hello World");
+                         
+            let humanScore = 0;
+            let computerScore = 0;
+            let tieCount = 0;
+
+            function getComputerChoice() {
+                    let computerChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+                    if (computerChoice === 1) {
+                    computerChoice = "rock";
+                } else if (computerChoice === 2) {
+                    computerChoice = "paper";
+                } else if (computerChoice === 3) {
+                    computerChoice = "sissors";
+                }
+                    console.log(computerChoice + "computer rnd");
+                return computerChoice;
+            }
+
+            function getHumanChoice() {
+                let humanChoice = prompt("Enter Rock, Paper, or Sissors").toLowerCase();
+                console.log(humanChoice + "Printing humanCHoice");
+                
+                return humanChoice;
+            }
+
+            function playRound(humanChoice, computerChoice) {
+
+                if (humanChoice === computerChoice) {
+                    tieCount++;
+                    console.log("It's a Tie!");
+                } else if (humanChoice === "rock" && computerChoice === "sissors") {
+                    humanScore++;
+                    console.log("You win! " + humanChoice + " beats " + computerChoice);
+                } else if (humanChoice === "paper" && computerChoice === "rock") {
+                    humanScore++;
+                    console.log("You win! " + humanChoice + " beats " + computerChoice);
+                } else if (humanChoice === "sissors" && computerChoice === "paper") {
+                    humanScore++;
+                    console.log("You win! " + humanChoice + " beats " + computerChoice);
+                } else {
+                    computerScore++;
+                    console.log("You lose! " + computerChoice + " beats " + humanChoice);
+                }
+            
+            }
+
+            function playGame() {
+            
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+
+                playRound(humanSelection, computerSelection);
+
+            }
+            
+            for (let i = 0; i < 5; i++) {
+                playGame();
+                console.log("Your Score:" + humanScore + " Computer Score: " + computerScore);
+            }
+
         </script>
     </body>
 </html>
