@@ -1,1 +1,1 @@
-# calcJS
+# Rock paper sissors in JS
